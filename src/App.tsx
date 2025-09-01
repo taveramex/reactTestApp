@@ -1,3 +1,5 @@
+import MyAwesomeApp from "./components/MyAwesomeApp";
+
 export function App() {
     return (
         <>
@@ -6,6 +8,7 @@ export function App() {
                 Too much cutie on your beauty
             </p>
             <button>looking very nice</button>
+            <MyAwesomeApp />
         </>
     );
 }
