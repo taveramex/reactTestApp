@@ -1,0 +1,76 @@
+body {
+    background-color: #f7e4ea; /* Rosa palo base */
+    background-image:
+        linear-gradient(135deg, #f7e4ea 60%, #f3c6d3 100%),
+        url("data:image/svg+xml;utf8,<svg width='60' height='60' viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='30' cy='30' r='1.5' fill='%23eac1d3' opacity='0.18'/></svg>");
+    background-repeat: repeat;
+    background-size: auto, 120px 120px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+    color: #6d4c5b; /* Color base elegante para el texto */
+}
+
+h1 {
+    color: #b86b8b;
+    text-align: center;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(184, 107, 139, 0.08);
+    margin-bottom: 0.3em;
+}
+
+h3 {
+    color: #a97c96;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0.7em;
+}
+
+p {
+    font-size: 19px;
+    color: #7d5c6b;
+    text-align: center;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    text-shadow: 0 1px 4px rgba(125, 92, 107, 0.06);
+}
+
+button {
+    background: linear-gradient(135deg, #ffb6d5 0%, #f78ca2 100%);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 16px 2px;
+    cursor: pointer;
+    border-radius: 30px; /* Más redondo */
+    box-shadow: 0 4px 24px 0 rgba(255, 182, 213, 0.4), 0 1.5px 4px 0 rgba(247, 140, 162, 0.2);
+    backdrop-filter: blur(2px);
+    transition: background 0.3s, box-shadow 0.3s;
+    border: 2px solid rgba(255,255,255,0.3);
+    /* Efecto cristal */
+    background-clip: padding-box;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #f78ca2 0%, #ffb6d5 100%);
+    box-shadow: 0 6px 32px 0 rgba(255, 182, 213, 0.5), 0 2px 8px 0 rgba(247, 140, 162, 0.3);
+}
+
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
