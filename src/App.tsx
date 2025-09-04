@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 
 const MEME_SUBREDDITS = [
     "catmemes",
-    "me_irl",
+    "aww",
     "wholesomememes",
+    "kittens",
+    "awwducational",
 ];
 
 /**
@@ -44,6 +46,10 @@ export function App() {
             });
     }, []);
 
+    /**
+     * Cambia el index del meme actual al siguiente en la lista. Si es el
+     *  ltimo, vuelve al principio de la lista.
+     */
     const handleNextMeme = () => {
         setIndex((prev) => (prev + 1) % memes.length);
     };
