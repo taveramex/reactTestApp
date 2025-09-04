@@ -1,29 +1,4 @@
 import { useEffect, useState } from "react";
-import MyAwesomeApp from "./components/MyAwesomeApp";
-
-// Palabras clave para filtrar memes de "miércoles de biolencia"
-const MEME_KEYWORDS = [
-    "rage",
-    "angry",
-    "violence",
-    "fight",
-    "explosion",
-    "scream",
-    "mad",
-    "evil",
-    "destroy",
-    "chaos",
-    "brutal",
-    "aggressive",
-    "punch",
-    "attack",
-    "blood",
-    "furious",
-    "wild",
-    "crazy",
-    "insane",
-    "danger"
-];
 
 const MEME_SUBREDDITS = [
     "catmemes",
