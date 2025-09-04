@@ -4,8 +4,6 @@ const MEME_SUBREDDITS = [
     "catmemes",
     "me_irl",
     "wholesomememes",
-    "IllegallySmolCats",
-    "Thisismylifemeow"
 ];
 
 /**
@@ -19,7 +17,7 @@ const MEME_SUBREDDITS = [
  * @returns Un JSX element que muestra un meme o un mensaje de error.
  */
 export function App() {
-    const [memes, setMemes] = useState<string[]>([]);
+    const [memes, setMemes] = useState<{ url: string, title: string }[]>([]);
     const [index, setIndex] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -28,14 +26,20 @@ export function App() {
 
     useEffect(() => {
         fetch(`https://meme-api.com/gimme/${randomSubreddit}/10`)
+            // aqui esperamos que regrese la respuesta y la convertimos a json
             .then(res => res.json())
+            // aqui obtenemos los memes y los guardamos en el estado, debe ser un then doble porque fetch regresa una promesa
             .then(data => {
-                const memeUrls = data.memes.map((m: any) => m.url);
-                setMemes(memeUrls);
+                // Guarda objetos con url y title
+                const memeObjs = data.memes.map((m: any) => ({
+                    url: m.url,
+                    title: m.title
+                }));
+                setMemes(memeObjs);
                 setLoading(false);
             })
             .catch(err => {
-                setError("Error al cargar memes: " + err.message);
+                setError("Meme-tastic error!!: " + err.message);
                 setLoading(false);
             });
     }, []);
@@ -51,13 +55,29 @@ export function App() {
                 Hola Mich, bienvenido a tu dosis diaria de memes. Haz clic en el meme para verlo en grande.
             </p>
             <h3>{randomSubreddit}</h3>
-            {loading && <p>Cargando memes...</p>}
+            {loading && (
+                <div style={{ textAlign: "center", margin: "32px 0" }}>
+                    <img
+                        src="https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif"
+                        alt="Gatito jugando mientras carga"
+                        style={{
+                            width: "180px",
+                            height: "180px",
+                            objectFit: "contain",
+                            borderRadius: "12px",
+                            marginBottom: "16px",
+                            boxShadow: "0 2px 16px #000a"
+                        }}
+                    />
+                    <p>Cargando memes...</p>
+                </div>
+            )}
             {error && <p>{error}</p>}
             {!loading && !error && memes.length > 0 && (
                 <>
                     <img
-                        src={memes[index]}
-                        alt="Meme"
+                        src={memes[index].url}
+                        alt={memes[index].title}
                         style={{
                             display: "block",
                             margin: "24px auto",
@@ -70,6 +90,10 @@ export function App() {
                         }}
                         onClick={() => setShowOverlay(true)}
                     />
+                    {/* Título del meme */}
+                    <div style={{ textAlign: "center", margin: "8px 0 4px 0", color: "#39ff14", fontWeight: 700 }}>
+                        {memes[index].title}
+                    </div>
                     {/* Contador de memes */}
                     <div style={{ textAlign: "center", margin: "12px 0", color: "#1976d2", fontWeight: 600 }}>
                         Meme {index + 1} de {memes.length}
@@ -91,13 +115,14 @@ export function App() {
                             onClick={() => setShowOverlay(false)}
                         >
                             <img
-                                src={memes[index]}
-                                alt="Meme grande"
+                                src={memes[index].url}
+                                alt={memes[index].title}
                                 style={{
                                     maxWidth: "90vw",
                                     maxHeight: "90vh",
                                     borderRadius: "16px",
-                                    boxShadow: "0 8px 32px #000"
+                                    boxShadow: "0 8px 32px #000",
+                                    objectFit: "contain"
                                 }}
                                 onClick={e => e.stopPropagation()}
                             />
